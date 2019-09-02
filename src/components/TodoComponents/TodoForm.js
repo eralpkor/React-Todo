@@ -20,10 +20,13 @@ class TodoForm extends Component {
         type='text' 
         placeholder='New Todo' 
         id='task'
+        name='task'
         value={this.state.task}
         onChange={this.handleChange}
         />
       </form>
-    )
+    );
   }
 }
+
+export default TodoForm;
