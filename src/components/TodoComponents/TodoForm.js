@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import utils from '../Utils/utils';
+const uuid = utils.uuid;
 
 class TodoForm extends Component {
   constructor(props) {
     super(props);
       this.state = {task: ''};
       this.handleChange = this.handleChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleChange(e) {
     this.setState({
@@ -12,9 +15,15 @@ class TodoForm extends Component {
     });
   }
 
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.createTodo({...this.state, id: uuid()});
+    this.setState({ task: ''})
+  }
+
   render() {
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <label htmlFor='task'>New Todo</label>
         <input
         type='text' 
@@ -24,6 +33,7 @@ class TodoForm extends Component {
         value={this.state.task}
         onChange={this.handleChange}
         />
+        <button>Add Todo</button>
       </form>
     );
   }

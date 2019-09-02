@@ -12,7 +12,7 @@ class App extends React.Component {
     return (
       <div  className='App'>
         <h2>Welcome to your Todo App!</h2>
-        <TodoForm />
+        {/* <TodoForm /> */}
         <TodoList />
       </div>
     );
